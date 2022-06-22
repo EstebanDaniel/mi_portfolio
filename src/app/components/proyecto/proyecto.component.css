@@ -1,0 +1,41 @@
+.row {
+padding-right: 0px;
+margin-right: 0px;
+}
+
+.container{
+
+display: flex;
+
+margin-top:20px;
+    
+
+}
+
+div {
+
+    background-color: coral;
+    text-align: center;
+
+}
+
+h1, h2, p {
+
+    color: #fff;
+    margin-top: 20px;
+}
+
+@media (max-width: 776px) {
+    div{
+        flex-direction: column;
+        justify-content: space-between;
+    align-items: center;
+    }
+}
+
+
+
+
+
+
+

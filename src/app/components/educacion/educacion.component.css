@@ -1,0 +1,30 @@
+.row {
+    padding-right: 0px;
+    margin-right: 0px;
+    
+    }
+    
+    div{
+    
+        background-color:coral ;
+    text-align: center;
+    }
+
+    .description{
+     
+        display:flex;
+        align-items:center;
+        justify-content: right;
+         
+    }
+    
+    h1,h3 {
+    display: inline;
+   color: #fff;
+    }
+
+    p { 
+        color: #fff;
+
+
+    }

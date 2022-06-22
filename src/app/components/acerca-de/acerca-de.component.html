@@ -1,0 +1,36 @@
+<div *ngIf= "persona"class="row">
+
+<div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+<img [src] = "persona.url_image" alt="Esteban Daniel Cardozo" class="img-fluid" id="foto">
+</div>
+
+
+<div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+<h1>
+    {{persona.nombre}} {{persona.apellido}}
+   
+</h1>
+ 
+
+<h2>
+    {{persona.titulo}}
+</h2>
+</div>
+
+
+
+<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+   
+    <span>
+<h1>Acerca de mí</h1>
+
+<p>
+    {{persona.descripcion}}
+</p>
+    </span>
+
+</div>
+
+
+</div>
+

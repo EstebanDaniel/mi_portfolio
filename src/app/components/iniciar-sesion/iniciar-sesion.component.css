@@ -1,0 +1,40 @@
+
+
+body{
+
+    font-family: 'League Spartan', sans-serif;
+    font-weight:300;
+    
+}
+
+
+
+.bg-dark-x{
+
+background-color:rgba(101, 105, 101, 0.6);
+
+}
+
+.form-control, .btn{
+
+min-height: 3.125rem;
+line-height:initial;
+}
+
+
+.img-1{
+
+background-image:url('../../../assets/programacion1.jpeg');
+background-size:cover;
+background-position:center;
+
+}
+
+.img-2{
+    background-image:url('../../../assets/pro2.jpg');
+    background-size: cover;
+    background-position: center;
+    
+
+
+}
