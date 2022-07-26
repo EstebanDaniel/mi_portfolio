@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { AutenticacionService } from 'src/app/services/autenticacion.service';
 
 
+
+
 @Component({
   selector: 'app-iniciar-sesion',
   templateUrl: './iniciar-sesion.component.html',
@@ -11,13 +13,17 @@ import { AutenticacionService } from 'src/app/services/autenticacion.service';
 })
 export class IniciarSesionComponent implements OnInit {
 
+  
+  
   form: FormGroup;
 
   constructor(private formbuilder: FormBuilder, private autenticacionService:AutenticacionService, private ruta:Router) { 
 this.form=this.formbuilder.group(
   {
+    
     email:['',[Validators.required,Validators.email]],
-    password:['',[Validators.required,Validators.minLength(6)]],
+    password:['',[Validators.required,Validators.maxLength(8),Validators.pattern(/^[1-8]+$/),Validators.minLength(8)]]
+    
 
 
   }
@@ -38,23 +44,23 @@ this.form=this.formbuilder.group(
   
   }
 
+
+
   onEnviar (event: Event)
   {
-event.preventDefault;
-this.autenticacionService.IniciarSesion(this.form.value).subscribe(data=>{
-
+    
+ event.preventDefault;
+ 
+  
+  this.autenticacionService.IniciarSesion(this.form.value).subscribe(data=>{
+   
 console.log("DATA:" + JSON.stringify(data));
-this.ruta.navigate(['/portfolio']);
-
+this.ruta.navigate(['/portfolio'])
 
 })
 
 
-
-
   }
-
- 
 
   
   

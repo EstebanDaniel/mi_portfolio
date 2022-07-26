@@ -1,24 +1,23 @@
-<div class="container-fluid">
 
+<div class="container-fluid">
 <div class="row min-vh-100">
    
-    <div id= "main-container">
- <div class="col-sm-12 offset-md-4 col-md-4 offset-md-4 offset-lg-4 col-lg-4 offset-lg-4 mt-4">
-    <h1 class="border caja">Proyectos</h1>
+<div id="main-container">
+    <div class="col-sm-12 offset-md-4 col-md-4 offset-md-4 offset-lg-4 col-lg-4 offset-lg-4 mt-4">
+    <h1 class="border caja">Skills</h1>
 </div>
-    <!--boton de agregado-->
-<button type = "button" class = "btn btn-success border mt-4" (click) ="onOpenModal('add')">
+        <!--boton de agregado-->
+<button type = "button" class = "btn btn-success border mb-3" (click) ="onOpenModal('add')">
     <a class="nav-link">
         <i class="bi bi-plus-circle"></i>
     </a> 
     </button>
 
-<div *ngFor ="let pro of proyectos" class="mt-3">
-
-   
+<div class="py-1" *ngFor ="let skill of skills">
+    
    <!--boton pencil de edición-->
     <a 
-    (click) = "onOpenModal('edit',pro)"
+    (click) = "onOpenModal('edit',skill)"
     class="btn btn-success border tooltips me-1 mb-1"
     data-placement="top"
     data-toggle="tooltip"
@@ -28,7 +27,7 @@
 </a>
 <!--boton x de borrado-->
 <a 
-(click) = "onOpenModal('delete',pro)"
+(click) = "onOpenModal('delete',skill)"
 class="btn btn-secondary border tooltips mb-1"
 data-placement="top"
 data-toggle="tooltip"
@@ -37,46 +36,48 @@ data-original-title="Delete"
 <i class="bi bi-trash"></i>
 </a>
 
-
-<div class="caja border row mx-auto mb-5">
-<div class="offset-lg-1 col-lg-2 col-sm-12 text-center mt-3">
-    <h3>{{pro.titulo_Pro}}</h3>
-</div>
-   
-<div class="col-lg-4 col-sm-12 mt-4 mb-2">
-       <a [href] ="pro.img_Pro" target="_blank"> <img src="{{pro.img_Pro}}" alt="" width="200px" height="200px" class="img-fluid img-thumbnail"> </a>
+    
+<div class="caja row ms-2 border bg-dark mb-5">
+   <div class="col-lg-3 col-sm-12 mt-5">
+    <h5>{{skill.titulo_Skills}} </h5>
 </div>
 
- <div class="col-lg-4 col-sm-12 mt-2">
- <p>{{pro.descrip_Pro}}</p>
-    <a [href] ="pro.repo_Pro" target="_blank" class="bg-dark border">
-    {{pro.repo_Pro}}
- </a>
-
- </div>
+    <div class="col-lg-3 col-sm-12 mt-5">
+        <h5>{{skill.nombre_Skills}}</h5>  
+    </div>
+      
+        <div class="col-lg-2 offset-lg-1 col-sm-12 img-thumbnail bg-light mt-2 mb-2">
+       <a [href] ="skill.img_Skills" target="_blank"> <img src="{{skill.img_Skills}}" alt="" width="75px" height="75px" class="img-fluid mt-2"></a>
+    </div>
+       
+        <div class="col-lg-3 col-sm-12 py-5">
+        <div class="progress bg-primary">
+            <div class="progress-bar bg-info" [style.width.%] ="skill.porcentaje_Skills" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
+                {{skill.porcentaje_Skills+"%"}}
+            </div>
+        </div>
+    </div>
+</div>
 
 </div>
- 
-</div>
 
 </div>
 
- 
 
 <!--Modal de agregado-->
 
 <div class="modal fade" 
-id="addProyectosModal"
+id="addSkillsModal"
  tabindex ="-1" 
  role="dialog" 
- aria-labelledby="addProyectosModalLabel" 
+ aria-labelledby="addSkillsModalLabel" 
  aria-hidden="true"
 >
 
-    <div class="modal-dialog modal-dialog-scrollable" role="document">
+    <div class="modal-dialog" role="document">
     <div class="modal-content">
     <div class="modal-header">
-    <h5 class="modal-title" id="addProyectosModalLabel">Añadir Proyectos</h5>
+    <h5 class="modal-title" id="addSkillsModalLabel">Añadir Skills</h5>
     <button
     type ="button"
     class ="close"
@@ -88,70 +89,72 @@ id="addProyectosModal"
     </div>
 
 <div class="modal-body">
-<form #addForm = "ngForm" (ngSubmit) ="onAddProyectos(addForm)">                      
+<form #addForm = "ngForm" (ngSubmit) ="onAddSkills (addForm)">                      
     <div class="form-group">
-     <label for="titulo_Pro">Titulo de proyecto</label>
-     <input type="text"   
+     <label for="titulo_Skills">Titulo-nivel</label>
+     <textarea type="text"   
             ngModel
             MaxLength="55"
-            name="titulo_Pro"
+            name="titulo_Skills"
             class ="form-control"
-            id="titulo_Pro"
-            placeholder="Titulo de proyecto"
+            id="titulo_Skills"
+            placeholder="Titulo-nivel (Ej:Hard skill; Soft skill; Frontend; Backend; Avanzado;intermedio)"
             required  
-        /> 
+        > </textarea>
     </div>
 
     <div class="form-group">
-        <label for="img_Pro">Imagen Url</label>
+        <label for="nombre_Skills">Nombre skill</label>
         <input type="text" 
                ngModel
-               MaxLength="255"
-               name="img_Pro"
+               MaxLength="55"
+               name="nombre_Skills"
                class="form-control"
-               id="img_Pro"
-               placeholder="Inserte url de la imagen del proyecto"
+               id="nombre_Skills"
+               placeholder="(Ej: JavaScript)"
                required  
            > 
        </div>
 
     <div class="form-group">
-        <label for="descrip_Pro">Descripción proyecto</label>
-        <textarea 
+        <label for="img_Skills">Imagen url</label>
+        <input type="text" 
+               ngModel
+               MaxLength="255"
+               name="img_Skills"
+               class="form-control"
+               id="img_Skills"
+               placeholder="Inserte url de la imagen"
+               required  
+           > 
+       </div>
+
+    <div class="form-group">
+        <label for="porcentaje_Skills">Nivel - Porcentaje</label>
+        <input 
         type="text" 
                ngModel
-               MaxLength="255"
-               name="descrip_Pro"
+               MaxLength="3"
+               name="porcentaje_Skills"
                class="form-control"
-               id="descrip_Pro"
-               placeholder="Descripción proyecto"
+               id="porcentaje_Skills"
+               placeholder="Nivel - Porcentaje (Ej:50)"
                required  
-           > </textarea>
+           /> 
        </div>
 
-    <div class="form-group">
-        <label for="repo_Pro">Repositorio de github</label>
-        <input type="text" 
-               ngModel
-               MaxLength="255"
-               name="repo_Pro"
-               class="form-control"
-               id="repo_Pro"
-               placeholder="Repositorio de github"
-               required  
-           > 
-       </div>
+
 
     <div class="modal-footer">
        <button
        type="button"
-       id="add-Proyectos-form"
+       id="add-Skills-form"
        class="btn btn-secondary"
        data-dismiss="modal"
        >
        Cerrar
        </button>
-       
+
        <button
        
        [disabled] ="addForm.invalid"
@@ -174,18 +177,18 @@ id="addProyectosModal"
 <!--Modal de edicion-->
 
 <div class="modal fade" 
-id="editProyectosModal"
+id="editSkillsModal"
  tabindex= "-1" 
  role="dialog" 
- aria-labelledby="ProyectosEditModalLabel" 
+ aria-labelledby="SkillsEditModalLabel" 
  aria-hidden="true"
 >
 
-    <div class="modal-dialog modal-dialog-scrollable" role="document">
+    <div class="modal-dialog" role="document">
     <div class="modal-content">
     <div class="modal-header">
-    <h5 class="modal-title" id="updateProyectosModalLabel">
-    Editar Proyectos {{editarProyectos?.titulo_Pro}}    
+    <h5 class="modal-title" id="updateSkillsModalLabel">
+    Editar Skills {{editarSkills?.titulo_Skills}}    
     </h5> 
     <button
     type="button"
@@ -197,65 +200,65 @@ id="editProyectosModal"
     </button>
     </div>
 
-
 <div class="modal-body">
-<form #editForm= "ngForm">                      <!--aca falta completar el ngform 1:06 del video-->
+<form #editForm= "ngForm">                      
     <div class="form-group">
-     <label for="name">Titulo proyecto</label>
-     <input type="text" 
-            ngModel = "{{editarProyectos?.titulo_Pro}}"  
+     <label for="name">Titulo-nivel</label>
+     <textarea type="text" 
+            ngModel = "{{editarSkills?.titulo_Skills}}"  
             MaxLength="55"                                                                     
-            name="titulo_Pro"
+            name="titulo_Skills"
             class="form-control"
-            id="titulo_Pro"
+            id="titulo_Skills"
             aria-describedby="email help"
-            placeholder="Titulo proyecto"
+            placeholder="Titulo-nivel (Ej:Hard skill; Soft skill; Frontend; Backend; Avanzado;intermedio)"
              
-        > 
+        > </textarea>
     </div>
     <input type="hidden"
-    ngModel = "{{editarProyectos?.id_Pro}}"
-     name="id_Pro"
+    ngModel = "{{editarSkills?.id_Skills}}"
+     name="id_Skills"
      class="form-control"
-     id="id_Pro"
+     id="id_Skills"
      placeholder=""
     >
 
     <div class="form-group">
-        <label for="img_Pro">Imagen url</label>
+        <label for="nombre_Skills">Nombre skill</label>
         <input type="text" 
-               ngModel = "{{editarProyectos?.img_Pro}}"
-               MaxLength="255"
-               name="img_Pro"
+               ngModel= "{{editarSkills?.nombre_Skills}}"
+               MaxLength="55"
+               name="nombre_Skills"
                class="form-control"
-               id="img_Pro"
+               id="nombre_Skills"
+               placeholder="(Ej: JavaScript)"
+           > 
+       </div>
+
+    <div class="form-group">
+        <label for="img_Skills">Imagen url</label>
+        <input type="text" 
+               ngModel = "{{editarSkills?.img_Skills}}"
+               MaxLength="255"
+               name="img_Skills"
+               class="form-control"
+               id="img_Skills"
                placeholder="Inserta url de la imagen"
            > 
        </div>
 
     <div class="form-group">
-        <label for="descrip_Pro">Descripción del proyecto</label>
-        <textarea type="text" 
-               ngModel= "{{editarProyectos?.descrip_Pro}}"
-               MaxLength="255"
-               name="descrip_Pro"
-               class="form-control"
-               id="descrip_Pro"
-               placeholder="Descripción del Proyecto"
-           > </textarea>
-       </div>
-
-       <div class="form-group">
-        <label for="repo_Pro">Repositorio de github</label>
+        <label for="porcentaje_Skills">Nivel - Porcentaje</label>
         <input type="text" 
-               ngModel= "{{editarProyectos?.repo_Pro}}"
-               MaxLength="255"
-               name="repo_Pro"
+               ngModel= "{{editarSkills?.porcentaje_Skills}}"
+               MaxLength ="3"
+               name="porcentaje_Skills"
                class="form-control"
-               id="repo_Pro" 
-               placeholder="Repositorio de github"   
+               id="porcentaje_Skills" 
+               placeholder="Nivel - Porcentaje (Ej:50)"   
            > 
        </div>
+
 
     <div class="modal-footer">
        <button
@@ -267,9 +270,9 @@ id="editProyectosModal"
 
        Cerrar
        </button>
-       
+
        <button
-       (click) ="onUpdateProyectos(editForm.value)"
+       (click) ="onUpdateSkills(editForm.value)"
        data-dismiss="modal"
        class="btn btn-success"
        >
@@ -288,11 +291,10 @@ id="editProyectosModal"
 
 <!--Modal de borrado-->
 
-
 <div 
 data-bs-toggle="modal" data-bs-target="#deleteModalLabel"
 class="modal fade" 
-id="deleteProyectosModal"
+id="deleteSkillsModal"
  tabindex= "-1" 
  role="dialog" 
  aria-labelledby="deleteModalLabel" 
@@ -302,7 +304,7 @@ id="deleteProyectosModal"
     <div class="modal-dialog" role="document">
     <div class="modal-content">
     <div class="modal-header">
-    <h5 class="modal-title" id="deleteModelLabel"> Borrar Proyectos </h5> 
+    <h5 class="modal-title" id="deleteModelLabel"> Borrar Skills </h5> 
     <button
     type="button"
     class="close"
@@ -316,7 +318,7 @@ id="deleteProyectosModal"
 <div class="modal-body">
 <p style="color:black">
 Seguro que desea eliminar? 
-{{borrarProyectos?.titulo_Pro}}?
+{{borrarSkills?.titulo_Skills}}?
 </p>
 
     <div class="modal-footer">
@@ -328,9 +330,9 @@ Seguro que desea eliminar?
 
        No
        </button>
-
+       
        <button
-       (click)= "onDeleteProyectos(borrarProyectos!.id_Pro)"
+       (click)= "onDeleteSkills(borrarSkills!.id_Skills)"
        class="btn btn-danger"
        data-dismiss="modal"
        >
@@ -346,8 +348,6 @@ Seguro que desea eliminar?
 
     <!----------------------------------------------------------------------------------->
 
-    <!--Alertas-->
-
     <!--spinner interceptor-->
 
     <div *ngIf= "loaderService.isLoading | async" class="uploader-status">
@@ -355,21 +355,24 @@ Seguro que desea eliminar?
         mode="indeterminate"></mat-spinner>
       
 
-    <div *ngIf ="!isLoading && proyectos?.length == 0" class="col-sm-12 col-md-12 offset-lg-4 col-lg-4 offset-lg-4">
-    <div class="alert alert-info" role="alert">
-        <h4 class="alert-heading">No se encuentran proyectos😮</h4>
-        <div class="d-flex justify-content-center">
-            <div class="spinner-border" role="status">
-              <span class="visually-hidden">Loading...</span>
-            </div>
-          </div>
-        <p>Proyectos no encontrados</p>
+ 
+  
+    <div *ngIf ="!isLoading && skills?.length == 0" class="col-sm-12 col-md-12 offset-lg-4 col-lg-4 offset-lg-4">
+    
+        <div class="alert alert-info" role="alert">
+        <h4 class="alert-heading">No se encuentra skills🤷‍♀️</h4>
+        <p>Skills no encontradas</p>
+    </div>
     </div>
 
-    </div>
+
   
 </div>
 
-</div>   
+</div> 
+
+
+<!--<button type="button" (click)="goBack()">Volver</button>-->
+    
 
 

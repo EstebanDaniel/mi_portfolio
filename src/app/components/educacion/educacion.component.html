@@ -1,28 +1,23 @@
-
-<div class= "row">
-    <h1>Educacion</h1>
-<div>
-
-<div class="text-center">
-
+<div class="container-fluid">
+<div class="row min-vh-100"> 
+    <div id="main-container">
     
-<!--boton de agregado-->
-<button type = "button" class = "btn btn-light" (click) ="onOpenModal('add')">
-<a class="nav-link" style= "color: rgb(0, 0, 0)">
-Agregar educación </a> 
-</button>
-</div>
-</div>
+    <div  class="col-sm-12 offset-md-4 col-md-4 offset-md-4 offset-lg-4 col-lg-4 offset-lg-4 mt-4"> 
+        <h1 class="caja border">Educación</h1>
+    </div>  
+       <!--boton de agregado-->
+<button type = "button" class = "btn btn-success border mt-4" (click) ="onOpenModal('add')">
+    <a class="nav-link">
+        <i class="bi bi-plus-circle"></i>
+    </a> 
+    </button>
 
-<div id= "main-container">
-<div *ngFor ="let edu of educaciones">
+<div *ngFor ="let edu of educaciones" class="mt-4">
 
-    <div class="col-8 text-center">
-    {{edu.titulo_Ed}}
    <!--boton pencil de edición-->
     <a 
     (click) = "onOpenModal('edit',edu)"
-    class="btn btn-light tooltips"
+    class="btn btn-success border tooltips me-1"
     data-placement="top"
     data-toggle="tooltip"
     data-original-title="Edit"
@@ -32,31 +27,36 @@ Agregar educación </a>
 <!--boton x de borrado-->
 <a 
 (click) = "onOpenModal('delete',edu)"
-class="btn btn-dark tooltips"
+class="btn btn-secondary border tooltips"
 data-placement="top"
 data-toggle="tooltip"
 data-original-title="Delete"
 >
-<i class="fa fa-times"></i>
+<i class="bi bi-trash"></i>
 </a>
-</div>
-   
-<div class="col-6">
-        <img src="{{edu.img_Ed}}" alt="" width="350px" height="350px" class="img-fluid">
+
+<div class="caja row mt-1 mx-auto border mb-5">
+    <div class="offset-lg-1 col-lg-2 col-sm-12 mt-5">
+<h3>{{edu.titulo_Ed}}</h3>
 </div>
 
- <div class="col-12">
- <p class="descripcion">{{edu.descripcion_Ed}}</p>
- </div>
 
- <div class="col-12">
-<p>{{edu.fecha_Ed}}</p>
-</div>
-   
-</div>
-
-</div>
+<div class="offset-lg-1 col-lg-4 col-sm-12 mt-5">
+    <p >{{edu.descripcion_Ed}}</p>
     
+</div>
+
+<div class="offset-lg-1 col-lg-2 col-sm-12 mt-2">
+       <a [href] ="edu.img_Ed" target="_blank"> 
+        <img src="{{edu.img_Ed}}" alt="" width="200px" height="150px"
+         class="img-fluid img-thumbnail mx-auto"> 
+       </a>
+         <p class="mt-1">{{edu.fechain_Ed+"/"+edu.fechaout_Ed}}</p>
+</div>
+
+</div>
+</div>
+</div> 
 
 <!--Modal de agregado-->
 
@@ -68,7 +68,7 @@ id="addEducacionModal"
  aria-hidden="true"
 >
 
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
     <div class="modal-content">
     <div class="modal-header">
     <h5 class="modal-title" id="addEducacionModalLabel">Añadir educacion</h5>
@@ -86,8 +86,10 @@ id="addEducacionModal"
 <form #addForm = "ngForm" (ngSubmit) ="onAddEducacion (addForm)">                      
     <div class="form-group">
      <label for="titulo_Ed">Titulo</label>
-     <input type="text"   
-            ngModel
+     <input 
+            type="text"   
+            ngModel 
+            MaxLength="55"
             name="titulo_Ed"
             class ="form-control"
             id="titulo_Ed"
@@ -95,42 +97,60 @@ id="addEducacionModal"
             required  
         /> 
     </div>
-
-    <div class="form-group">
-        <label for="fecha_Ed">Fecha</label>
-        <input 
-        type="text" 
-               ngModel
-               name="fecha_Ed"
-               class="form-control"
-               id="fecha_Ed"
-               placeholder="Fecha"
-               required  
-           /> 
-       </div>
-
+ 
     <div class="form-group">
         <label for="descripcion_Ed">Descripción educación</label>
-        <input type="text" 
+        <textarea type="text" 
                ngModel
+               MaxLength="255"
                name="descripcion_Ed"
                class="form-control"
                id="descripcion_Ed"
                placeholder="Descripción"
-               required  
-           > 
+               required   
+           > </textarea>
        </div>
 
     <div class="form-group">
-        <label for="img_Ed">Imagen URL</label>
+        <label for="img_Ed">Imagen Url</label>
         <input type="text" 
                ngModel
+               Maxlength="255"
                name="img_Ed"
                class="form-control"
                id="img_Ed"
                placeholder="Inserte url de la imagen"
                required  
            > 
+       </div>
+
+
+    <div class="form-group">
+        <label for="fechain_Ed">Fecha inicio</label>
+        <input 
+        type="text" 
+               ngModel
+               MaxLength="4"
+               name="fechain_Ed"
+               class="form-control"
+               id="fechain_Ed"
+               placeholder="Fecha inicio (Ej:2010)"
+               required  
+           /> 
+       </div>
+
+       <div class="form-group">
+        <label for="fechaout_Ed">Fecha Finalizado</label>
+        <input 
+        type="text" 
+               ngModel
+               MaxLength="4"
+               name="fechaout_Ed"
+               class="form-control"
+               id="fechaout_Ed"
+               placeholder="Fecha finalizado (Ej:2010)"
+               required  
+           /> 
        </div>
 
 
@@ -149,7 +169,7 @@ id="addEducacionModal"
        
        [disabled] ="addForm.invalid"
        type="submit"
-       class="btn btn-primary"
+       class="btn btn-success"
        >
        Añadir cambios
        
@@ -173,9 +193,10 @@ id="editEducacionModal"
  role="dialog" 
  aria-labelledby="EducacionEditModalLabel" 
  aria-hidden="true"
+ 
 >
 
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
     <div class="modal-content">
     <div class="modal-header">
     <h5 class="modal-title" id="updateEducacionModalLabel">
@@ -193,11 +214,12 @@ id="editEducacionModal"
 
 
 <div class="modal-body">
-<form #editForm= "ngForm">                      <!--aca falta completar el ngform 1:06 del video-->
+<form #editForm= "ngForm">                      
     <div class="form-group">
      <label for="name">Titulo</label>
      <input type="text" 
-            ngModel = "{{editarEducacion?.titulo_Ed}}"                                                                       
+            ngModel = "{{editarEducacion?.titulo_Ed}}" 
+            MaxLength="55"                                                                      
             name="titulo_Ed"
             class="form-control"
             id="titulo_Ed"
@@ -215,31 +237,23 @@ id="editEducacionModal"
     >
 
     <div class="form-group">
-        <label for="fecha_Ed">Fecha</label>
-        <input type="text" 
-               ngModel= "{{editarEducacion?.fecha_Ed}}"
-               name="fecha_Ed"
-               class="form-control"
-               id="fecha_Ed" 
-               placeholder="Fecha"   
-           > 
-       </div>
-
-    <div class="form-group">
         <label for="descripcion_Ed">Descripción</label>
-        <input type="text" 
+        <textarea type="text" 
                ngModel= "{{editarEducacion?.descripcion_Ed}}"
+               MaxLength="255"
+             
                name="descripcion_Ed"
                class="form-control"
                id="descripcion_Ed"
                placeholder="Descripción"
-           > 
+           > </textarea>
        </div>
 
     <div class="form-group">
-        <label for="img_Ed">Imagen URL</label>
+        <label for="img_Ed">Imagen Url</label>
         <input type="text" 
                ngModel = "{{editarEducacion?.img_Ed}}"
+               MaxLength="255"
                name="img_Ed"
                class="form-control"
                id="img_Ed"
@@ -247,6 +261,34 @@ id="editEducacionModal"
            > 
        </div>
 
+
+    <div class="form-group" >
+        <label for="fechain_Ed">Fecha inicio</label>
+        <input type="text" 
+               
+               MaxLength="4"
+               
+               ngModel= "{{editarEducacion?.fechain_Ed}}"
+               name="fechain_Ed"
+               class="form-control"
+               id="fechain_Ed" 
+               placeholder="Fecha inicio (Ej:2010)"   
+           > 
+       </div>
+
+       <div class="form-group" >
+        <label for="fechaout_Ed">Fecha finalizado</label>
+        <input type="text" 
+               
+               MaxLength="4"
+               
+               ngModel= "{{editarEducacion?.fechaout_Ed}}"
+               name="fechaout_Ed"
+               class="form-control"
+               id="fechaout_Ed" 
+               placeholder="Fecha finalizado (Ej:2010)"   
+           > 
+       </div>
 
     <div class="modal-footer">
        <button
@@ -263,7 +305,7 @@ id="editEducacionModal"
        <button
        (click) ="onUpdateEducacion(editForm.value)"
        data-dismiss="modal"
-       class="btn btn-primary"
+       class="btn btn-success"
        >
 
        Guardar cambios
@@ -278,9 +320,6 @@ id="editEducacionModal"
 
 
 <!------------------------------------------------------------------------------------------>
-
-
-
 
 <!--Modal de borrado-->
 
@@ -311,12 +350,12 @@ id="deleteEducacionModal"
 
 
 <div class="modal-body">
-<p>
+<p style="color:black">
 Seguro que desea eliminar? 
 {{borrarEducacion?.titulo_Ed}}?
 </p>
 
-    <div class="modal-footer">
+    <div class="modal-footer text-bg-light">
        <button
        type="button"
        class="btn btn-secondary"
@@ -344,17 +383,24 @@ Seguro que desea eliminar?
 
     <!----------------------------------------------------------------------------------->
 
-    <!--Alertas-->
+    <!--spinner interceptor-->
 
-    <div *ngIf ="educaciones?.length == 0" class="col-lg-12 col-md-12 col-xl-12">
+    <div *ngIf= "loaderService.isLoading | async" class="uploader-status">
+        <mat-spinner style="margin:0 auto;" 
+        mode="indeterminate"></mat-spinner>
+      
+      
+
+    <div *ngIf ="!isLoading && educaciones?.length === 0" class="col-sm-12 col-md-12 offset-lg-5 col-lg-2 offset-lg-5">
     <div class="alert alert-info" role="alert">
         <h4 class="alert-heading">No se encuentra educaciones🤔</h4>
         <p>Educaciones no encontradas</p>
     </div>
 
-
     </div>
   
+</div>
+
 </div>
 
 <!--<button type="button" (click)="goBack()">Volver</button>-->

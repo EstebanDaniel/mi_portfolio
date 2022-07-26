@@ -9,7 +9,7 @@ import { Persona } from '../Models/intefazPersona';
 })
 export class AboutService {
  
-  private apiServerUrl= environment.apiBaseURL;
+  apiServerUrl= environment.apiBaseURL;
 
   constructor(private http:HttpClient) { }
 

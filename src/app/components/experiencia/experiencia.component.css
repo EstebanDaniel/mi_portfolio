@@ -1,24 +1,31 @@
-.row {
-padding-right: 0px;
-margin-right: 0px;
 
-
-
-}
 
 div{
 
-    background-color:coral ;
+    
     
     text-align: center;
 }
 
-h1,h3 {
+
+h1,h2 {
+
 
 color: #fff;
 
 }
 
+
 p{
+    
     color: #fff;
+    font-size: 0.8em;
+    word-break:break-all;
 }
+
+
+
+
+
+
+

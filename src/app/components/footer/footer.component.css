@@ -1,21 +1,18 @@
-.row {
-    background-color:rgb(47, 45, 45);
-    padding-right: 0px;
-    margin-right: 0px;
-    text-align: center;
 
-  
-
-
-    
-}
 
 footer {
-font: size 14px;
+font-size: 0.8rem;
 color : rgb(255, 255, 255);
+border-radius: 2% !important;
 display: flex;
 flex-direction: column;
 text-align: center;
-box-shadow: 5px 5px 5px rgb(0, 0, 0)
+/*box-shadow: 10px 5px 5px rgb(0, 0, 0)*/
 
+}
+
+
+a{
+
+    color: #3c763d
 }

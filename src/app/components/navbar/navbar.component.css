@@ -1,7 +1,17 @@
 
 
-.row{
-    padding-right: 0px;
-    margin-right: 0px;
+.navbar-brand:hover{
+
+    
+    color: rgba(255, 255, 255, 0.75) !important;
+    border-radius: 30px;
 }
+
+
+i {
+
+  color: #3c763d
+   
+}
+
 

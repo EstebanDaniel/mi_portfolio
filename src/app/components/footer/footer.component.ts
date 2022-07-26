@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FooterService } from 'src/app/services/footer.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-footer',
@@ -8,9 +8,15 @@ import { FooterService } from 'src/app/services/footer.service';
 })
 export class FooterComponent implements OnInit {
 
-  constructor(private dataFoot: FooterService) { }
+  constructor(private location:Location) { }
 
   ngOnInit(): void {
   }
+
+  goBack(): void {
+    this.location.back();
+ 
+}
+
 
 }

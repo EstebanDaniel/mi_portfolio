@@ -1,1 +1,83 @@
 /* You can add global styles to this file, and also import other style files */
+
+body {
+    background-color: #051937
+}
+
+.row {
+  padding-right: 0px;
+  margin-right: 0px;
+
+}
+
+.caja{
+
+    border-radius: 30px;
+    background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
+  }
+  
+  img:hover{ 
+    
+    -webkit-transform:scale(0.98);
+-moz-transform:scale(0.98);
+-ms-transform:scale(0.98);
+-o-transform:scale(0.98);
+transform:scale(0.98)
+}
+
+.mat-progress-spinner circle, .mat-spinner circle { stroke: #3fb53f; }
+
+  
+
+
+
+
+
+
+
+/*estilo modales*/
+
+   .progressbar{
+
+    background-color: rgb(255, 255, 255)
+}
+
+.modal-header{
+
+    background:  #051937
+
+}
+
+
+.modal-title {
+
+    color: #fff
+}
+
+.form-group {
+
+background: #fff
+
+}
+
+.modal-body {
+   
+   background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
+}
+
+.form-control{
+
+    background: rgb(198, 194, 194)
+}
+
+.modal-footer {
+
+    background: #fff
+}
+
+.modal-dialog {
+
+    background: none
+}
+/*html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }*/

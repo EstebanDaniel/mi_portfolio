@@ -1,6 +1,6 @@
-<header class="header">
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
-    <div class="container-fluid height">
+ 
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container-fluid"> 
       <a class="navbar-brand text-white-50 w-40 h-40" routerLink="/portfolio">
         <i class="bi bi-terminal-fill"></i>
         Argentina programa
@@ -10,10 +10,11 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+ 
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
           
             <li class="nav-item">
-            <a class="nav-link" routerLink="/Acerca-de">Acerca de
+            <a class="nav-link" routerLink ="/AcercaDe">Acerca de
               <i class="bi bi-file-person"></i>
             </a>
           </li>
@@ -37,42 +38,14 @@
               <i class="bi bi-bar-chart-line"></i>
             </a>
           </li>
-
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Contacto
-              <i class="bi bi-telephone"></i>
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#">Instragram
-                <i class="bi bi-instagram"></i>
-                <i></i>
-              </a>
-            </li>
-              <li><a class="dropdown-item" href="#">Facebook
-                <i class="bi bi-facebook"></i>
-              </a>
-            </li>
-              <!--<li><hr class="dropdown-divider"></li>-->
-              <li><a class="dropdown-item" href="#">Linkedin
-                <i class="bi bi-linkedin"></i>
-              </a>
-            </li>
-              <li><a class="dropdown-item" href="#">Github
-                <i class="bi bi-github"></i>
-              </a>
-              </li>
-              <li><a class="dropdown-item" href="#">Whatsapp
-                <i class="bi bi-whatsapp"></i></a>
-              </li>
-            </ul>
-          </li>
         </ul>
         <form class="d-flex" role="search">
-          <button class="btn btn-outline-light" type="button" (click) ="onLogOut()">Cerrar sesión</button>  
+          <button class="btn btn-outline-light border-0" type="button" (click) ="DoYouClose()">
+            <i class="bi bi-power"></i>
+            </button>  
         </form>
       </div>
     </div>
+    
   </nav>
-  
-</header>
+

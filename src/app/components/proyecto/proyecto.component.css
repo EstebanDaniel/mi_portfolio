@@ -1,37 +1,30 @@
-.row {
-padding-right: 0px;
-margin-right: 0px;
-}
 
-.container{
-
-display: flex;
-
-margin-top:20px;
-    
-
-}
 
 div {
 
-    background-color: coral;
+     
     text-align: center;
 
 }
 
-h1, h2, p {
+h1, h2, h3, p {
 
     color: #fff;
-    margin-top: 20px;
+    margin-top: 1rem;
+    text-align: center;
+    
 }
 
-@media (max-width: 776px) {
-    div{
-        flex-direction: column;
-        justify-content: space-between;
-    align-items: center;
-    }
+a,p{
+
+    font-size: 0.8em;
+    word-break:break-all;
+
 }
+
+
+
+
 
 
 

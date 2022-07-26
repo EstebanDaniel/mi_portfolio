@@ -4,6 +4,7 @@ import { NgForm } from '@angular/forms';
 import { Educacion } from 'src/app/Models/interfazEducacion';
 import { EducationService } from 'src/app/services/education.service';
 import { Location } from '@angular/common';
+import { LoaderService } from 'src/app/services/loader.service';
 
 
 @Component({
@@ -12,16 +13,24 @@ import { Location } from '@angular/common';
   styleUrls: ['./educacion.component.css']
 })
 export class EducacionComponent implements OnInit {
- 
+  
   public educaciones: Educacion[]=[]
   public editarEducacion: Educacion | undefined;
   public borrarEducacion: Educacion | undefined;
+  public isLoading!: boolean;
   
-  
-  constructor(private dataEdu: EducationService,private location:Location) { }
+  constructor(private dataEdu: EducationService,private location:Location, public loaderService:LoaderService) {
 
+    this.isLoading=true
 
+  }
+   
   ngOnInit(): void {
+
+    setTimeout(() => {
+      this.isLoading=false;
+    },5000)
+    
     this.getEducaciones();
   
   }
@@ -61,6 +70,7 @@ button.click();
 }
 
 public onAddEducacion(addForm: NgForm):void {
+  
   document.getElementById('add-Educacion-form')?.click();
   this.dataEdu.addEducacion(addForm.value).subscribe({
 next: (response:Educacion) => {
@@ -108,15 +118,9 @@ error:(error:HttpErrorResponse)=>{
 }
 
 
-
 /*goBack(): void {
   this.location.back();
 }*/
-
-
-
-
-
 
 
 }

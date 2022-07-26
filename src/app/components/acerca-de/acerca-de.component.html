@@ -1,36 +1,235 @@
-<div *ngIf= "persona"class="row">
+<div class="container-fluid">
 
-<div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
-<img [src] = "persona.url_image" alt="Esteban Daniel Cardozo" class="img-fluid" id="foto">
+    <div *ngIf = "persona" class="row">
+
+        <div class=" col-lg-2 offset-md-4 col-md-4 offset-md-4 col-sm-12
+         d-flex flex-column justify-content-center mx-auto" id="main-container">
+           
+        <a [href] ="persona.url_image" target="_blank"><img [src] = "persona.url_image" 
+            alt="Esteban Daniel Cardozo" class="img-fluid mt-3" id="foto"></a>
+        
+        <div class="mb-3" >
+        <!--boton pencil de edición-->
+        <a 
+        (click) = "onOpenModal('edit',persona)"
+        class="btn btn-success tooltips border"
+        data-placement="top"
+        data-toggle="tooltip"
+        data-original-title="Edit"
+        >
+        <i class="lapiz fa-solid fa-pencil"></i>
+        </a>
+        </div>
+
+        <button class="btn btn-outline-light border-success" type="button" data-bs-toggle="offcanvas" 
+        data-bs-target="#offcanvasStart" aria-controls="offcanvasStart"><i class="tel bi bi-phone-vibrate"><br>Contacto:</i></button>
+
+        </div>
+        
+        <div class="caja col-lg-8 col-md-12 col-sm-12 mt-5 border mb-5 ms-1 mx-auto">    
+        <h1 class="mt-5">
+            {{persona.nombre}} <br> {{persona.apellido}}   
+        </h1>
+        <h2 class="mt-5">
+            {{persona.titulo}}
+        </h2>
+
+        <h4 class="mt-5">
+            Acerca de mí:
+        </h4>
+        <br>
+        <p class="mt-2 border">
+            {{persona.descripcion}}
+        </p>
+
+        </div>  
+
+
+        <!--------------------------------canvas de contacto-->
+<div class="offcanvas offcanvas-start" style="background-color:#051937;" tabindex="-1" id="offcanvasStart" aria-labelledby="offcanvasStartLabel">
+  <div class="offcanvas-header">
+    <h4 class="offcanvas-title" id="offcanvasStartLabel">Mis redes sociales:</h4>
+    <button type="button" class="btn-close bg-success" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    
+    <a class="btn btn-outline-light border-0" href="https://www.instagram.com/estebandaniel.cardozo/" target="_blank">
+        <i class="bi bi-instagram"></i>
+        Instragram
+      </a>
+      <br>
+      <a class="btn btn-outline-light border-0" href="https://www.facebook.com/estebandaniel.cardozo.58" target="_blank">
+        <i class="bi bi-facebook"></i>
+        Facebook
+      </a>
+      <br>
+      <a class="btn btn-outline-light border-0" href="https://www.linkedin.com/in/esteban-daniel-cardozo-7b8060239/?lipi=urn%3Ali%3Apage%3Ad_flagship3_feed%3BjVAypJy4TiO1Cw7zbJKMoQ%3D%3D" target="_blank">
+        <i class="bi bi-linkedin"></i>
+        Linkedin
+      </a>
+      <br>
+      <a class="btn btn-outline-light border-0" href="https://github.com/EstebanDaniel" target="_blank">
+        <i class="bi bi-github"></i>
+        Github
+      </a>
+      <br>
+      <a class="btn btn-outline-light border-0" href="https://wa.me/5493751346857" target="_blank">
+        <i class="bi bi-whatsapp"></i>
+        Whatsapp
+      </a>
+      <br>
+      <a class="btn btn-outline-light border-0" href="https://mailto:estebandanielcardozo65@gmail.com" target="_blank">
+        <i class="bi bi-envelope"></i>
+        Gmail
+      </a>
+
+
+<p class="mt-5" style="color: #3c763d; ">
+    <br>
+    Esteban Daniel Cardozo | © Argentina programa 2022
+    </p>
+    
+  </div>
 </div>
 
+<!-------modal de edicion---------------------->
 
-<div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
-<h1>
-    {{persona.nombre}} {{persona.apellido}}
+
+<div class="modal fade" 
+id="editPersonaModal"
+ tabindex= "-1" 
+ role="dialog" 
+ aria-labelledby="PersonaEditModalLabel" 
+ aria-hidden="true"
+>
+
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+    <div class="modal-header">
+    <h5 class="modal-title" id="updatePersonaModalLabel">
+    Editar Persona    
+    </h5> 
+    <button
+    type="button"
+    class="close"
+    data-dismiss="modal"
+    aria-label="Close"
+    >
+    <span aria-hidden="true">&times;</span>
+    </button>
+    </div>
+
+
+<div class="modal-body">
+<form #editForm= "ngForm">  
+    <div class="form-group">
+        <label for="name">Titulo</label>
+        <input type="text" 
+               ngModel = "{{editarPersona?.titulo}}"    
+               MaxLength="55"                                                                   
+               name="titulo"
+               class="form-control"
+               id="titulo"
+               aria-describedby="email help"
+               placeholder="Titulo"
+                
+           > 
+       </div>
+    
+    <input type="hidden"
+    ngModel = "{{editarPersona?.id}}"
+     name="id"
+     class="form-control"
+     id="id"
+     placeholder=""
+    >
    
-</h1>
- 
+    <div class="form-group">
+        <label for="url_image">Foto de perfil</label>
+        <input type="text" 
+               ngModel = "{{editarPersona?.url_image}}"
+               MaxLength="255"
+               name="url_image"
+               class="form-control"
+               id="id"
+               placeholder="Inserte url de la imagen"
+           > 
+       </div>
 
-<h2>
-    {{persona.titulo}}
-</h2>
+       <div class="form-group">
+        <label for="descripcion">Acerca de mi</label>
+        <textarea type="text" 
+               ngModel= "{{editarPersona?.descripcion}}"
+               MaxLength="255"
+               name="descripcion"
+               class="form-control"
+               id="descripcion"
+               placeholder="Acerca de mi"
+           > </textarea>
+       </div>
+
+       <div class="form-group">
+        <label for="nombre"></label>
+        <input type="hidden" 
+               ngModel= "{{editarPersona?.nombre}}"
+               name="nombre"
+               class="form-control"
+               id="nombre"
+               placeholder=""
+           > 
+       </div>
+
+       <div class="form-group">
+        <label for="apellido"></label>
+        <input type="hidden" 
+               ngModel= "{{editarPersona?.apellido}}"
+               name="apellido"
+               class="form-control"
+               id="apellido"
+               placeholder=""
+           > 
+       </div>
+
+
+    <div class="modal-footer">
+       <button
+       type="button"
+       id=""
+       data-dismiss="modal"
+       class="btn btn-secondary"
+       >
+
+       Cerrar
+       </button>
+
+       <button
+       (click) ="onUpdatePersona(editForm.value)"
+       data-dismiss="modal"
+       class="btn btn-success"
+       >
+
+       Guardar cambios
+       </button>
+       </div>
+</form>
+
+    </div>
+    </div>
+    </div>
+</div>  
+
+
+    <!----------------------------------------------------------------------------------->
+    <!--cargando----->
+
+     <!--spinner interceptor-->
+
+</div>    
+
+
+<div *ngIf= "loaderService.isLoading | async" class="uploader-status">
+  <mat-spinner style="margin:0 auto; margin-top: 22%;" 
+  mode="indeterminate"></mat-spinner>
+
+
 </div>
-
-
-
-<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-   
-    <span>
-<h1>Acerca de mí</h1>
-
-<p>
-    {{persona.descripcion}}
-</p>
-    </span>
-
-</div>
-
-
-</div>
-

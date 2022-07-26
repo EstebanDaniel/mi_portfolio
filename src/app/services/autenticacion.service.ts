@@ -5,17 +5,18 @@ import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class AutenticacionService {
+
 url=environment.apiBaseURLlog
 currentUserSubject: BehaviorSubject<any>;
 
 
-
   constructor(private http: HttpClient) {
-  console.log("el servicio de autenticación esta corriendo");
+  // this is theconsole.log("el servicio de autenticación esta corriendo");
 
   this.currentUserSubject= new BehaviorSubject<any>(JSON.parse(sessionStorage.getItem('currentUser')||'{}'));
 
@@ -32,6 +33,7 @@ currentUserSubject: BehaviorSubject<any>;
   }))
 
    }
+
  
   get UsuarioAutenticado()
   {
@@ -41,12 +43,9 @@ currentUserSubject: BehaviorSubject<any>;
   }
 
   logOut(){
-  window.sessionStorage.removeItem('currentUser');
-  
-
+  window.sessionStorage.removeItem('currentUser'); 
 
   }
-
 
  }
 

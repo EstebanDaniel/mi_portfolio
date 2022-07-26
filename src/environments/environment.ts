@@ -4,6 +4,8 @@
 
 export const environment = {
   production: false,
+ // apiBaseURLlog : 'https://backprueba-deploy.herokuapp.com/api/login',
+  //apiBaseURL : 'https://backprueba-deploy.herokuapp.com/api/'
   apiBaseURLlog : 'http://localhost:8080/api/login',
   apiBaseURL : 'http://localhost:8080/api/'
 };
