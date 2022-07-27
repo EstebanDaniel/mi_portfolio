@@ -1,4 +1,6 @@
 export const environment = {
   production: true,
-  apiBaseURL : 'http://localhost:8080'
+  apiBaseURLlog : 'https://backendportfolioarg.herokuapp.com/api/login',
+  apiBaseURL : 'https://backendportfolioarg.herokuapp.com/api/'
 };
+

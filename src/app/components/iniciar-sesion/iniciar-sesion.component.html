@@ -48,6 +48,17 @@
         <img src="../../../assets/logoargprograma.png" class="img-fluid w-40 h-40" alt="argentinaPrograma">
       </div>
 
+      <!--spinner intercetor y alerta de credenciales fallidas-->
+      <div *ngIf= "loaderService.isLoading | async" class="uploader-status mx-auto">
+        <mat-spinner [diameter] ="30" style="margin:0 auto;" 
+        mode="indeterminate"></mat-spinner>
+        <p class="mt-3 ms-2">Cargando, por favor espere unos momentos...</p>
+
+        <div class="alert alert-info mt-3" role="alert">
+        <p>Verifique credenciales si no puede ingresar</p>
+      </div>
+       </div>
+
     
  <div class="px-lg-5 py-lg-4 p-4 w-100 align-self-center">
 <h1 class=" font-weight-bold mb-4 text-light">¡Bienvenido!</h1>
@@ -86,13 +97,6 @@
         <p *ngIf ="Password?.errors?.['maxlength']" class="text-danger">
         La contraseña debe tener máximo 8 caracteres.
         </p>
-        <p *ngIf ="Password?.errors?.['pattern']" class="text-danger">
-         Contraseña invalida.
-          </p>
-          <p *ngIf ="Password?.errors?.['minlength']" class="text-danger">
-           La Contraseña debe tener mínimo 8 caracteres.
-             </p>
-            
         
          </div>
     </div>
@@ -107,8 +111,6 @@
 </div> 
 
 </div>
-
-
 
 
 </section>

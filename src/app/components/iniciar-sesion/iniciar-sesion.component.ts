@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder,FormGroup,Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 import { AutenticacionService } from 'src/app/services/autenticacion.service';
+import { LoaderService } from 'src/app/services/loader.service';
 
 
 
@@ -17,12 +18,12 @@ export class IniciarSesionComponent implements OnInit {
   
   form: FormGroup;
 
-  constructor(private formbuilder: FormBuilder, private autenticacionService:AutenticacionService, private ruta:Router) { 
+  constructor(private formbuilder: FormBuilder, private autenticacionService:AutenticacionService, private ruta:Router,public loaderService:LoaderService) { 
 this.form=this.formbuilder.group(
   {
     
     email:['',[Validators.required,Validators.email]],
-    password:['',[Validators.required,Validators.maxLength(8),Validators.pattern(/^[1-8]+$/),Validators.minLength(8)]]
+    password:['',[Validators.required,Validators.maxLength(8)]]
     
 
 
