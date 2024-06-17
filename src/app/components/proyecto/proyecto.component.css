@@ -7,7 +7,7 @@ div {
 
 }
 
-h1, h2, h3, p {
+h1, h2, h3, p{
 
     color: #fff;
     margin-top: 1rem;
@@ -15,14 +15,37 @@ h1, h2, h3, p {
     
 }
 
+i{
+    color: #fff;
+}
+
 a,p{
 
     font-size: 0.9em;
-    word-break:break-all;
+    word-break:break-word;
 
 }
 
+.botonColor{
+    background-color:  #00C9A7;
+    border-color: #00C9A7;
+   }
+  
+   .botonColor:hover{
+    transition:0.5s;
+    opacity: 0.6;
+   }
 
+.git{
+    color: #fff;
+    text-decoration: none;
+    word-break:break-word;
+}
+
+.git:hover{
+    color: #00C9A7;
+    transition:0.5s;
+}
 
 
 

@@ -3,10 +3,10 @@
     <div id="main-container">
     
     <div  class="col-sm-12 offset-md-4 col-md-4 offset-md-4 offset-lg-4 col-lg-4 offset-lg-4 mt-4"> 
-        <h1 class="caja border">Educación</h1>
+        <h1 class="caja">Educación</h1>
     </div>  
        <!--boton de agregado-->
-<button type = "button" class = "btn btn-success border mt-4" (click) ="onOpenModal('add')">
+<button type = "button" class = "btn botonColor border mt-4" *ngIf ="isLoginIn()" (click) ="onOpenModal('add')">
     <a class="nav-link">
         <i class="bi bi-plus-circle"></i>
     </a> 
@@ -16,8 +16,9 @@
 
    <!--boton pencil de edición-->
     <a 
+    *ngIf ="isLoginIn()"
     (click) = "onOpenModal('edit',edu)"
-    class="btn btn-success border tooltips me-1"
+    class="btn botonColor border tooltips me-1"
     data-placement="top"
     data-toggle="tooltip"
     data-original-title="Edit"
@@ -26,6 +27,7 @@
 </a>
 <!--boton x de borrado-->
 <a 
+*ngIf ="isLoginIn()"
 (click) = "onOpenModal('delete',edu)"
 class="btn btn-secondary border tooltips"
 data-placement="top"
@@ -35,13 +37,13 @@ data-original-title="Delete"
 <i class="bi bi-trash"></i>
 </a>
 
-<div class="caja row mt-1 mx-auto border mb-5">
+<div class="caja row mt-1 mx-auto mb-5 nombreAp">
     <div class="offset-lg-1 col-lg-2 col-sm-12 mt-5">
 <h3>{{edu.titulo_Ed}}</h3>
 </div>
 
 
-<div class="offset-lg-1 col-lg-4 col-sm-12 mt-5">
+<div class="offset-lg-1 col-lg-4 col-sm-12 mt-3 mt-lg-5">
     <p >{{edu.descripcion_Ed}}</p>
     
 </div>
@@ -169,7 +171,7 @@ id="addEducacionModal"
        
        [disabled] ="addForm.invalid"
        type="submit"
-       class="btn btn-success"
+       class="btn btn-success botonColor"
        >
        Añadir cambios
        
@@ -305,7 +307,7 @@ id="editEducacionModal"
        <button
        (click) ="onUpdateEducacion(editForm.value)"
        data-dismiss="modal"
-       class="btn btn-success"
+       class="btn btn-success botonColor"
        >
 
        Guardar cambios
@@ -350,7 +352,7 @@ id="deleteEducacionModal"
 
 
 <div class="modal-body">
-<p style="color:black">
+<p  class="pPie">
 Seguro que desea eliminar? 
 {{borrarEducacion?.titulo_Ed}}?
 </p>

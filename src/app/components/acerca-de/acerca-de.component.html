@@ -1,18 +1,23 @@
+<div *ngIf= "loaderService.isLoading | async" class="uploader-status">
+  <mat-spinner style="margin:0 auto; margin-top: 22%;" 
+  mode="indeterminate"></mat-spinner>
+</div>
+
 <div class="container-fluid">
 
-    <div *ngIf = "persona" class="row">
+    <div *ngIf = "persona" class="row pt-lg-5 mt-lg-5 ms-lg-1">
 
-        <div class=" col-lg-2 offset-md-4 col-md-4 offset-md-4 col-sm-12
-         d-flex flex-column justify-content-center mx-auto" id="main-container">
+        <div class=" col-lg-2 offset-md-4 col-md-4 offset-md-4 col-sm-6 col-12
+         d-flex flex-column justify-content-center align-items-center ps-lg-3 mx-auto mb-lg-4" id="main-container">
            
         <a [href] ="persona.url_image" target="_blank"><img [src] = "persona.url_image" 
-            alt="Esteban Daniel Cardozo" class="img-fluid mt-2" id="foto"></a>
+            alt="Esteban Daniel Cardozo" class="img-fluid" id="foto"></a>
         
-        <div class="mb-3" >
+        <div *ngIf ="isLoginIn()">
         <!--boton pencil de edición-->
         <a 
         (click) = "onOpenModal('edit',persona)"
-        class="btn btn-success tooltips border"
+        class="btn botonColor tooltips border"
         data-placement="top"
         data-toggle="tooltip"
         data-original-title="Edit"
@@ -21,35 +26,35 @@
         </a>
         </div>
 
-        <button class="btn btn-outline-light border-success" type="button" data-bs-toggle="offcanvas" 
-        data-bs-target="#offcanvasStart" aria-controls="offcanvasStart"><i class="tel bi bi-phone-vibrate"><br>Contacto:</i></button>
+        <button class="btn btn-outline-light contacto mt-2 col-sm-10 col-6 col-md-10 col-lg-12 d-block mx-auto" type="button" data-bs-toggle="offcanvas" 
+        data-bs-target="#offcanvasStart" aria-controls="offcanvasStart"><i class="bi bi-chat-text"></i></button>
 
         </div>
         
-        <div class="caja col-lg-8 col-md-12 col-sm-12 mt-5 border mb-5 ms-1 mx-auto">    
-        <h1 class="mt-5">
+        <div class="caja col-lg-8 col-md-4 col-sm-4 col-11 mt-4 mb-5 ms-3 d-block mx-auto justify-content-center border-5">    
+        <h1 class="mt-3">
             {{persona.nombre}} <br> {{persona.apellido}}   
         </h1>
-        <h2 class="mt-5">
+        <h2 class="mt-5 nombreAp">
             {{persona.titulo}}
         </h2>
 
-        <h4 class="mt-5">
+        <h4 class="mt-5 nombreAp">
             Acerca de mí:
         </h4>
-        <br>
-        <p class="mt-2 border">
+      
+        <p class="nombreAp">
             {{persona.descripcion}}
         </p>
 
         </div>  
-
+      </div>
 
         <!--------------------------------canvas de contacto-->
-<div class="offcanvas offcanvas-start" style="background-color:#051937;" tabindex="-1" id="offcanvasStart" aria-labelledby="offcanvasStartLabel">
+<div class="offcanvas offcanvas-start barraLateral" tabindex="-1" id="offcanvasStart" aria-labelledby="offcanvasStartLabel">
   <div class="offcanvas-header">
     <h4 class="offcanvas-title" id="offcanvasStartLabel">Mis redes sociales:</h4>
-    <button type="button" class="btn-close bg-success" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    <button type="button" class="btn-close botonCerrar" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
   <div class="offcanvas-body">
     
@@ -63,7 +68,7 @@
         Facebook
       </a>
       <br>
-      <a class="btn btn-outline-light border-0" href="https://www.linkedin.com/in/esteban-daniel-cardozo-7b8060239/?lipi=urn%3Ali%3Apage%3Ad_flagship3_feed%3BjVAypJy4TiO1Cw7zbJKMoQ%3D%3D" target="_blank">
+      <a class="btn btn-outline-light border-0" href="https://www.linkedin.com/in/esteban-daniel-cardozo/" target="_blank">
         <i class="bi bi-linkedin"></i>
         Linkedin
       </a>
@@ -84,9 +89,9 @@
       </a>
 
 
-<p class="mt-5" style="color: #3c763d; ">
+<p class="mt-5" style="color: #00C9A7; ">
     <br>
-    Esteban Daniel Cardozo | © Argentina programa 2022
+    Esteban Daniel Cardozo | © 2022
     </p>
     
   </div>
@@ -205,7 +210,7 @@ id="editPersonaModal"
        <button
        (click) ="onUpdatePersona(editForm.value)"
        data-dismiss="modal"
-       class="btn btn-success"
+       class="btn btn-success botonColor"
        >
 
        Guardar cambios
@@ -225,11 +230,3 @@ id="editPersonaModal"
      <!--spinner interceptor-->
 
 </div>    
-
-
-<div *ngIf= "loaderService.isLoading | async" class="uploader-status">
-  <mat-spinner style="margin:0 auto; margin-top: 22%;" 
-  mode="indeterminate"></mat-spinner>
-
-
-</div>

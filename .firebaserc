@@ -1,5 +1,9 @@
 {
   "projects": {
-    "default": "hosting-angular-99528"
-  }
+    "default": "hosting-angular-99528",
+    "e.g prueba": "hosting-angular-99528"
+  },
+  "targets": {},
+  "etags": {},
+  "dataconnectEmulatorConfig": {}
 }

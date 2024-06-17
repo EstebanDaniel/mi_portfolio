@@ -18,20 +18,21 @@ import { GuardGuard } from '../services/guard.guard';
 const routes: Routes = [
 
   {path:'iniciar-sesion',component:IniciarSesionComponent},
-{path:'',redirectTo:'iniciar-sesion',pathMatch:'full'},
+
 
 
 //Component-less route
 {path:'',children:[
 
-  {path:'',outlet:'navbar',component:NavbarComponent,canActivate:[GuardGuard]},
-  {path:'portfolio',component:PortfolioComponent, canActivate:[GuardGuard]},
-  {path:'AcercaDe',component:AcercaDeComponent,canActivate:[GuardGuard]},
-  {path:'Educacion',component:EducacionComponent,canActivate:[GuardGuard]},
-  {path:'Experiencia',component:ExperienciaComponent,canActivate:[GuardGuard]},
-  {path:'Skills',component:SkillsComponent,canActivate:[GuardGuard]},
-  {path:'Proyectos',component:ProyectoComponent,canActivate:[GuardGuard]},
+  {path:'',outlet:'navbar',component:NavbarComponent},
+  {path:'portfolio',component:PortfolioComponent},
+  {path:'',component:AcercaDeComponent},
+  {path:'Educacion',component:EducacionComponent},
+  {path:'Experiencia',component:ExperienciaComponent},
+  {path:'Skills',component:SkillsComponent},
+  {path:'Proyectos',component:ProyectoComponent},
   {path:'**',component:NotFoundComponent},
+  {path:'',redirectTo:'AcercaDe',pathMatch:'full'}
 ]},
 ];
 

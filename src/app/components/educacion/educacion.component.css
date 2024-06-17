@@ -18,8 +18,17 @@
     p{
     
       font-size: 0.9em;  
-    word-break:break-all;
+    word-break:break-word;
     }
     
+    .botonColor{
+        background-color:  #00C9A7;
+        border-color: #00C9A7;
+       }
+      
+       .botonColor:hover{
+        transition:0.5s;
+        opacity: 0.6;
+       }
   
-   
+ 

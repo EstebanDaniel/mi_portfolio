@@ -4,7 +4,10 @@ import { NgForm } from '@angular/forms';
 import { Persona } from 'src/app/Models/intefazPersona';
 
 import { AboutService } from 'src/app/services/about.service';
+import { AutenticacionService } from 'src/app/services/autenticacion.service';
+import { IsLoggedService } from 'src/app/services/is-logged.service';
 import { LoaderService } from 'src/app/services/loader.service';
+
 
 
 @Component({
@@ -17,10 +20,11 @@ export class AcercaDeComponent implements OnInit {
   public persona: Persona | undefined;
   public editarPersona: Persona | undefined;
   public isLoading!: boolean;
-
-  constructor(private dataAbout: AboutService, public loaderService: LoaderService) {
+ 
+  constructor(private dataAbout: AboutService, public loaderService: LoaderService, private isLogged:IsLoggedService) {
 
     this.isLoading = true;
+    
 
    }
 
@@ -31,6 +35,9 @@ export class AcercaDeComponent implements OnInit {
       },5000);
 
       this.getUser();
+
+     this.isLoginIn();
+
     }
     
     public getUser():void {
@@ -106,8 +113,11 @@ export class AcercaDeComponent implements OnInit {
       });
     
     }
+
+  isLoginIn():boolean{
+
+  return this.isLogged.isLogin();
   
+  }
 
 }
-
-

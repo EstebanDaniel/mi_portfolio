@@ -7,12 +7,17 @@ body{
     
 }
 
-p{
+p,h3{
 
     
-    color: #3fb53f;
+    color: #00C9A7;
     
 }
+
+h6{
+    color:rgba(101, 105, 101, 0.6);
+}
+
 
 
 .bg-dark-x{
@@ -41,6 +46,15 @@ background-position:center;
     background-size: cover;
     background-position: center;
     
+}
 
+.botonVolver:hover{
 
+    background: #00C9A7;
+    border-color: #00C9A7;
+}
+
+.cargando{
+    text-align: center;
+    margin-top: 1rem;
 }

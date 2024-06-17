@@ -2,10 +2,10 @@
 <div class= "row min-vh-100">
     <div id="main-container">
         <div  class="col-sm-12 offset-md-4 col-md-4 offset-md-4 offset-lg-4 col-lg-4 offset-lg-4 mt-4">
-    <h1  class="mt-4 border caja">Experiencia</h1>
+    <h1  class="mt-4 caja">Experiencia</h1>
       </div>   
             <!--boton de agregado-->
-<button type = "button" class = "btn btn-success border mt-4" (click) ="onOpenModal('add')">
+<button type = "button" class = "btn botonColor border mt-4" *ngIf ="isLoginIn()" (click) ="onOpenModal('add')">
     <a class="nav-link">
         <i class="bi bi-plus-circle"></i>
     </a> 
@@ -15,8 +15,9 @@
 
    <!--boton pencil de edición-->
     <a 
+    *ngIf ="isLoginIn()"
     (click) = "onOpenModal('edit',exp)"
-    class="btn btn-success border tooltips me-1"
+    class="btn botonColor border tooltips me-1"
     data-placement="top"
     data-toggle="tooltip"
     data-original-title="Edit"
@@ -25,6 +26,7 @@
 </a>
 <!--boton x de borrado-->
 <a 
+*ngIf ="isLoginIn()"
 (click) = "onOpenModal('delete',exp)"
 class="btn btn-secondary border tooltips"
 data-placement="top"
@@ -35,7 +37,7 @@ data-original-title="Delete"
 </a>
 
 
-<div class="row caja mt-1 border mb-3 mx-auto">
+<div class="row caja mt-1 mb-3 mx-auto">
 
     <div class="offset-lg-1 col-lg-2 col-sm-12 col-md-12 mt-5">
 <h2>
@@ -47,7 +49,7 @@ data-original-title="Delete"
        <a [href] ="exp.img_Exp" target="_blank"> <img src="{{exp.img_Exp}}" alt="" width="200px" height="200px" class="img-fluid img-thumbnail mb-2"></a>
     </div>
 
-    <div class="offset-lg-1 col-lg-4 col-sm-12 mt-5">
+    <div class="offset-lg-1 col-lg-4 col-sm-12 mt-5 nombreAp">
          <p>{{exp.descrip_Exp}}</p>
        <p>{{exp.ocupacion_Exp}}</p>
        <p>{{exp.empresa_Exp}}</p>
@@ -196,7 +198,7 @@ id="addExperienciaModal"
        
        [disabled] ="addForm.invalid"
        type="submit"
-       class="btn btn-success"
+       class="btn btn-success botonColor"
        >
        Añadir cambios
        
@@ -353,7 +355,7 @@ id="editExperienciaModal"
        <button
        (click) ="onUpdateExperiencia(editForm.value)"
        data-dismiss="modal"
-       class="btn btn-success"
+       class="btn btn-success botonColor"
        >
 
        Guardar cambios
@@ -397,7 +399,7 @@ id="deleteExperienciaModal"
     </div>
 
 <div class="modal-body">
-<p style="color:black">
+<p class="pPie">
 Seguro que desea eliminar? 
 {{borrarExperiencia?.titulo_Exp}}?
 </p>

@@ -4,10 +4,10 @@
    
 <div id="main-container">
     <div class="col-sm-12 offset-md-4 col-md-4 offset-md-4 offset-lg-4 col-lg-4 offset-lg-4 mt-4">
-    <h1 class="border caja">Skills</h1>
+    <h1 class="caja">Skills</h1>
 </div>
         <!--boton de agregado-->
-<button type = "button" class = "btn btn-success border mb-3" (click) ="onOpenModal('add')">
+<button type = "button" class = "btn botonColor border mb-3" *ngIf ="isLoginIn()" (click) ="onOpenModal('add')">
     <a class="nav-link">
         <i class="bi bi-plus-circle"></i>
     </a> 
@@ -17,8 +17,9 @@
     
    <!--boton pencil de edición-->
     <a 
+    *ngIf ="isLoginIn()"
     (click) = "onOpenModal('edit',skill)"
-    class="btn btn-success border tooltips me-1 mb-1"
+    class="btn botonColor border tooltips me-1 mb-1"
     data-placement="top"
     data-toggle="tooltip"
     data-original-title="Edit"
@@ -27,6 +28,7 @@
 </a>
 <!--boton x de borrado-->
 <a 
+*ngIf ="isLoginIn()"
 (click) = "onOpenModal('delete',skill)"
 class="btn btn-secondary border tooltips mb-1"
 data-placement="top"
@@ -37,12 +39,12 @@ data-original-title="Delete"
 </a>
 
     
-<div class="caja row ms-2 border bg-dark mb-5">
+<div class="caja row ms-2 bg-dark mb-5">
    <div class="col-lg-3 col-sm-12 mt-5">
-    <h5>{{skill.titulo_Skills}} </h5>
+    <h3>{{skill.titulo_Skills}} </h3>
 </div>
 
-    <div class="col-lg-3 col-sm-12 mt-5">
+    <div class="col-lg-3 col-sm-12 mt-5 nombreAp">
         <h5>{{skill.nombre_Skills}}</h5>  
     </div>
       
@@ -52,7 +54,7 @@ data-original-title="Delete"
        
         <div class="col-lg-3 col-sm-12 py-5">
         <div class="progress bg-primary">
-            <div class="progress-bar bg-info" [style.width.%] ="skill.porcentaje_Skills" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
+            <div class="progress-bar bg-info nombreAp" [style.width.%] ="skill.porcentaje_Skills" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
                 {{skill.porcentaje_Skills+"%"}}
             </div>
         </div>
@@ -159,7 +161,7 @@ id="addSkillsModal"
        
        [disabled] ="addForm.invalid"
        type="submit"
-       class="btn btn-success"
+       class="btn btn-success botonColor"
        >
        Añadir cambios
        
@@ -274,7 +276,7 @@ id="editSkillsModal"
        <button
        (click) ="onUpdateSkills(editForm.value)"
        data-dismiss="modal"
-       class="btn btn-success"
+       class="btn btn-success botonColor"
        >
 
        Guardar cambios
@@ -316,7 +318,7 @@ id="deleteSkillsModal"
     </div>
 
 <div class="modal-body">
-<p style="color:black">
+<p class="pPie">
 Seguro que desea eliminar? 
 {{borrarSkills?.titulo_Skills}}?
 </p>

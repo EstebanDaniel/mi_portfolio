@@ -2,6 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Skills } from 'src/app/Models/interfazSkills';
+import { IsLoggedService } from 'src/app/services/is-logged.service';
 import { LoaderService } from 'src/app/services/loader.service';
 import { SkillsService } from 'src/app/services/skills.service';
 
@@ -18,7 +19,7 @@ export class SkillsComponent implements OnInit {
 
   public isLoading!: boolean;
 
-  constructor(private dataSkills: SkillsService,public loaderService:LoaderService) {
+  constructor(private dataSkills: SkillsService,public loaderService:LoaderService,private isLogged:IsLoggedService) {
 
   this.isLoading=true
 
@@ -118,5 +119,10 @@ export class SkillsComponent implements OnInit {
       
       }
 
+      isLoginIn():boolean{
+
+        return this.isLogged.isLogin();
+        
+        }
 
 }

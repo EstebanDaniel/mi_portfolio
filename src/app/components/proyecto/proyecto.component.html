@@ -3,11 +3,11 @@
 <div class="row min-vh-100">
    
     <div id= "main-container">
- <div class="col-sm-12 offset-md-4 col-md-4 offset-md-4 offset-lg-4 col-lg-4 offset-lg-4 mt-4">
-    <h1 class="border caja">Proyectos</h1>
+ <div class="col-sm-12 offset-md-4 col-md-4 offset-md-4 offset-lg-4 col-lg-4 offset-lg-4 mt-4 pb-2">
+    <h1 class="caja">Proyectos</h1>
 </div>
     <!--boton de agregado-->
-<button type = "button" class = "btn btn-success border mt-4" (click) ="onOpenModal('add')">
+<button type = "button" class = "btn botonColor border mt-4" *ngIf ="isLoginIn()" (click) ="onOpenModal('add')">
     <a class="nav-link">
         <i class="bi bi-plus-circle"></i>
     </a> 
@@ -18,8 +18,9 @@
    
    <!--boton pencil de edición-->
     <a 
+    *ngIf ="isLoginIn()"
     (click) = "onOpenModal('edit',pro)"
-    class="btn btn-success border tooltips me-1 mb-1"
+    class="btn botonColor border tooltips me-1 mb-1"
     data-placement="top"
     data-toggle="tooltip"
     data-original-title="Edit"
@@ -28,6 +29,7 @@
 </a>
 <!--boton x de borrado-->
 <a 
+*ngIf ="isLoginIn()"
 (click) = "onOpenModal('delete',pro)"
 class="btn btn-secondary border tooltips mb-1"
 data-placement="top"
@@ -38,18 +40,18 @@ data-original-title="Delete"
 </a>
 
 
-<div class="caja border row mx-auto mb-5">
+<div class="caja row mx-auto mb-5">
 <div class="offset-lg-1 col-lg-2 col-sm-12 text-center mt-3">
     <h3>{{pro.titulo_Pro}}</h3>
 </div>
    
-<div class="col-lg-4 col-sm-12 mt-4 mb-2">
+<div class="col-lg-4 col-sm-12 mt-4 mb-2 nombreAp">
        <a [href] ="pro.img_Pro" target="_blank"> <img src="{{pro.img_Pro}}" alt="" width="200px" height="200px" class="img-fluid img-thumbnail"> </a>
 </div>
 
- <div class="col-lg-4 col-sm-12 mt-2">
+ <div class="col-lg-4 col-sm-12 mt-2 mb-1 nombreAp">
  <p>{{pro.descrip_Pro}}</p>
-    <a [href] ="pro.repo_Pro" target="_blank" class="bg-dark border">
+    <a [href] ="pro.repo_Pro" target="_blank" class="git">
     {{pro.repo_Pro}}
  </a>
 
@@ -156,7 +158,7 @@ id="addProyectosModal"
        
        [disabled] ="addForm.invalid"
        type="submit"
-       class="btn btn-success"
+       class="btn btn-success botonColor"
        >
        Añadir cambios
        
@@ -271,7 +273,7 @@ id="editProyectosModal"
        <button
        (click) ="onUpdateProyectos(editForm.value)"
        data-dismiss="modal"
-       class="btn btn-success"
+       class="btn btn-success botonColor"
        >
 
        Guardar cambios
@@ -314,7 +316,7 @@ id="deleteProyectosModal"
     </div>
 
 <div class="modal-body">
-<p style="color:black">
+<p class="pPie">
 Seguro que desea eliminar? 
 {{borrarProyectos?.titulo_Pro}}?
 </p>

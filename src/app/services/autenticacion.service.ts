@@ -13,6 +13,8 @@ export class AutenticacionService {
 
 url=environment.apiBaseURLlog
 currentUserSubject: BehaviorSubject<any>;
+isLogged = false;
+ 
 
 
   constructor(private http: HttpClient) {
@@ -26,8 +28,10 @@ currentUserSubject: BehaviorSubject<any>;
    
    {
   return this.http.post(this.url, credenciales).pipe(map(data => {
+   
  sessionStorage.setItem('currentUser', JSON.stringify(data));
     this.currentUserSubject.next(data);
+    this.isLogged = true;
     return data;
 
   }))

@@ -2,6 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Proyectos } from 'src/app/Models/InterfazProyectos';
+import { IsLoggedService } from 'src/app/services/is-logged.service';
 import { LoaderService } from 'src/app/services/loader.service';
 import { ProyectService } from 'src/app/services/proyect.service';
 
@@ -17,7 +18,7 @@ export class ProyectoComponent implements OnInit {
   public borrarProyectos: Proyectos | undefined;
   public isLoading!: boolean;
 
-  constructor(private dataProyect: ProyectService,public loaderService:LoaderService) {
+  constructor(private dataProyect: ProyectService,public loaderService:LoaderService,private isLogged:IsLoggedService) {
   
    this.isLoading = true;
 
@@ -114,5 +115,11 @@ export class ProyectoComponent implements OnInit {
         });
       
       }
+
+      isLoginIn():boolean{
+
+        return this.isLogged.isLogin();
+        
+        }
 
 }

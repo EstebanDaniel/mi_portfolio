@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Experiencia } from 'src/app/Models/interfazExperiencia';
 import { ExperienceService } from 'src/app/services/experience.service';
+import { IsLoggedService } from 'src/app/services/is-logged.service';
 import { LoaderService } from 'src/app/services/loader.service';
 
 @Component({
@@ -18,7 +19,7 @@ export class ExperienciaComponent implements OnInit {
   public isLoading!: boolean;  
 
 
-  constructor(private dataExp: ExperienceService,public loaderService:LoaderService) {
+  constructor(private dataExp: ExperienceService,public loaderService:LoaderService,private isLogged:IsLoggedService) {
   this.isLoading=true;
 
    }
@@ -114,5 +115,12 @@ export class ExperienciaComponent implements OnInit {
         });
       
       }
+
+      isLoginIn():boolean{
+
+        return this.isLogged.isLogin();
+        
+        }
+      
       
 }

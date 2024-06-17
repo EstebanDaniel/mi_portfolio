@@ -15,15 +15,16 @@ import { LoaderService } from 'src/app/services/loader.service';
 export class IniciarSesionComponent implements OnInit {
 
   
-  
+
   form: FormGroup;
 
   constructor(private formbuilder: FormBuilder, private autenticacionService:AutenticacionService, private ruta:Router,public loaderService:LoaderService) { 
+
 this.form=this.formbuilder.group(
   {
     
     email:['',[Validators.required,Validators.email]],
-    password:['',[Validators.required,Validators.maxLength(8)]]
+    password:['',[Validators.required,Validators.maxLength(15)]] //modelo de datos q espera el inicio de sesion
     
 
 
@@ -35,7 +36,7 @@ this.form=this.formbuilder.group(
   ngOnInit(): void {
   }
 
-  get Email ()
+  get Email () //propiedades para acceder a los form control y que las validaciones funcionen email.haserror (getter)
   {
   return this.form.get('email')
   }
@@ -47,23 +48,22 @@ this.form=this.formbuilder.group(
 
 
 
-  onEnviar (event: Event)
+  onLogin (event: Event)
   {
     
  event.preventDefault;
  
   
   this.autenticacionService.IniciarSesion(this.form.value).subscribe(data=>{
-   
+    
 //console.log("DATA:" + JSON.stringify(data));
-this.ruta.navigate(['/portfolio'])
+this.ruta.navigate(['/'])
 
 })
 
 
   }
 
-  
   
 }
 

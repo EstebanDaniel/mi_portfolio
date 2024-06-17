@@ -1,7 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 
 body {
-    background-color: #051937
+    
+    background: #051937;
+    
+    
 }
 
 .row {
@@ -13,27 +16,33 @@ body {
 .caja{
 
     border-radius: 30px;
-    background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
+    background-image: linear-gradient(to right top, #051937, #004166, #006d8c, #009ba2, #00c9a7);
+    
   }
+
+  h1,h2,h3{
+    text-shadow:  #051937 0.1em 0.1em 0.2em;
+  }
+
+  .nombreAp{
+
+    text-shadow:  #051937 0.1em 0.1em 0.2em;
+ }
+
   
   img:hover{ 
     
-    -webkit-transform:scale(0.98);
--moz-transform:scale(0.98);
--ms-transform:scale(0.98);
--o-transform:scale(0.98);
-transform:scale(0.98)
+    -webkit-transform:scale(0.95);
+-moz-transform:scale(0.95);
+-ms-transform:scale(0.95);
+-o-transform:scale(0.95);
+transform:scale(0.95);
+transition: .2s;
 }
 
-.mat-progress-spinner circle, .mat-spinner circle { stroke: #3fb53f; }
+.mat-progress-spinner circle, .mat-spinner circle { stroke: #00C9A7; }
 
   
-
-
-
-
-
-
 
 /*estilo modales*/
 
@@ -62,7 +71,7 @@ background: #fff
 
 .modal-body {
    
-   background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
+   background-image: linear-gradient(to right top, #051937, #004166, #006d8c, #009ba2, #00c9a7);
 }
 
 .form-control{
@@ -72,7 +81,11 @@ background: #fff
 
 .modal-footer {
 
-    background: #fff
+    background-image: linear-gradient(to right top, #051937, #004166, #006d8c, #009ba2, #00c9a7);
+}
+
+.pPie{
+    color: #fff;
 }
 
 .modal-dialog {

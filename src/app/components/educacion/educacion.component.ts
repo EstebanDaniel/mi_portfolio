@@ -5,6 +5,7 @@ import { Educacion } from 'src/app/Models/interfazEducacion';
 import { EducationService } from 'src/app/services/education.service';
 import { Location } from '@angular/common';
 import { LoaderService } from 'src/app/services/loader.service';
+import { IsLoggedService } from 'src/app/services/is-logged.service';
 
 
 @Component({
@@ -19,7 +20,7 @@ export class EducacionComponent implements OnInit {
   public borrarEducacion: Educacion | undefined;
   public isLoading!: boolean;
   
-  constructor(private dataEdu: EducationService,private location:Location, public loaderService:LoaderService) {
+  constructor(private dataEdu: EducationService,private location:Location, public loaderService:LoaderService,private isLogged:IsLoggedService) {
 
     this.isLoading=true
 
@@ -53,9 +54,9 @@ const container = document.getElementById('main-container');
 const button =document.createElement('button');
 button.type = 'button';
 button.style.display ='none';
-button.setAttribute('data-toggle','modal');
+button.setAttribute('data-toggle','modal');//clase de bootstrap para la ventana modal
 if (mode ==='add'){
-  button.setAttribute('data-target', '#addEducacionModal')
+  button.setAttribute('data-target', '#addEducacionModal')//clase de bootstrap para la ventana modal
 } 
 else if (mode==='delete'){
   this.borrarEducacion = educacion;
@@ -116,6 +117,12 @@ error:(error:HttpErrorResponse)=>{
   });
 
 }
+
+isLoginIn():boolean{
+
+  return this.isLogged.isLogin();
+  
+  }
 
 
 /*goBack(): void {
